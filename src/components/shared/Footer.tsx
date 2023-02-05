@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ToggleThemeButton } from "../theme/theme";
+import { ToggleThemeButton } from "../../theme/theme";
 
 const yearString = (date: Date) =>
 	date.toLocaleDateString("en-us", { year: "numeric" });

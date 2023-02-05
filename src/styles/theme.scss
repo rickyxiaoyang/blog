@@ -4,11 +4,14 @@ body {
 	--primary-color: #222831;
 	--secondary-color: #393e46;
 	--tertiary-color: #eeeeee;
-
+  // --light-white: #FFFBF5;
+  --light-white: white;
 	--accent-color: var(--secondary-color);
 
-	--primary-background: white;
+	// --primary-background: white;
+  --primary-background: var(--light-white);
 	--secondary-background: var(--tertiary-color);
+  --contrast-background: var(--light-white);
 
 	--primary-text: var(--primary-color);
 	--secondary-text: var(--secondary-color);
@@ -27,11 +30,11 @@ body {
 }
 
 body.dark {
-	--primary-background: #222831;
-	/* --primary-background: #041c32;Í */
-	--secondary-background: #393e46;
-	/* --secondary-background: #04293a; */
 	--tertiary-color: #064663;
+	--primary-background: #222831;
+	
+	--secondary-background: #393e46;
+  --contrast-background: var(--light-white);
 
 	--accent-color: #ffd369;
 	--primary-text: white;

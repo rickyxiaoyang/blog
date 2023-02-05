@@ -1,6 +1,6 @@
-import "../styles/styles.scss";
+import "../../styles/styles.scss";
 import React, { useContext } from "react";
-import ThemeContextWrapper, { ThemeContext } from "../theme/theme";
+import ThemeContextWrapper, { ThemeContext } from "../../theme/theme";
 import Footer from "./Footer";
 import { Header } from "./Header";
 

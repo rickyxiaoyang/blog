@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { Layout } from "../../components/shared/Layout";
 
 type PageData = {
 	data: {
@@ -19,13 +20,15 @@ export default function PostTemplate({
 	},
 }: PageData) {
 	return (
-		<div>
+		<Layout>
 			<div>
-				<h1>{frontmatter.title}</h1>
-				<h2>{frontmatter.date}</h2>
-				<div dangerouslySetInnerHTML={{ __html: html }} />
+				<div>
+					<h1>{frontmatter.title}</h1>
+					<h2>{frontmatter.date}</h2>
+					<div dangerouslySetInnerHTML={{ __html: html }} />
+				</div>
 			</div>
-		</div>
+		</Layout>
 	);
 }
 
@@ -35,7 +38,6 @@ export const pageQuery = graphql`
 			html
 			frontmatter {
 				date(formatString: "MMMM DD, YYYY")
-				slug
 				title
 			}
 		}
