@@ -11,8 +11,9 @@
   margin: auto;
   max-width: 800px;
   width: 100%;
-  background-color: var(--contrast-background);
+  background-color: #F5F5F5;
   color: var(--primary-color);
+  border-radius: 10px;
 
   .post-item-text-container {
     padding: 1rem;
@@ -26,9 +27,11 @@
   
   .post-item-image {
     width: 300px;
-    height: 100px;
-
+    height: 150px;
+    max-height: 200px;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 10px 0 0 10px;
   }
 }

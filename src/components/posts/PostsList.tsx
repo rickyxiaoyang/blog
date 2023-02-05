@@ -17,6 +17,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
 			{posts.map((post) => (
 				<PostItem key={post.slug} post={post} />
 			))}
+			<div style={{ height: "70vh" }}></div>
 		</div>
 	);
 }
