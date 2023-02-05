@@ -3,25 +3,7 @@ import { graphql, HeadFC, PageProps } from "gatsby";
 import { Layout } from "../components/shared/Layout";
 import { PostsList } from "../components/posts/PostsList";
 
-type PageData = {
-	allMarkdownRemark: {
-		nodes: {
-			fields: {
-				slug: string;
-			};
-			frontmatter: {
-				date: string;
-				dateString: string;
-				title: string;
-				seoTitle: string;
-				categories: string[];
-				image: string;
-			};
-		};
-	};
-};
-
-const IndexPage: React.FC<PageProps> = ({ data }: any) => {
+const IndexPage = ({ data }: PageProps<Queries.AllPostsQuery>) => {
 	return (
 		<Layout>
 			<PostsList
@@ -39,7 +21,7 @@ export default IndexPage;
 export const Head: HeadFC = () => <title>Blog - Ricky X. Yang</title>;
 
 export const pageQuery = graphql`
-	query MyQuery {
+	query AllPosts {
 		allMarkdownRemark {
 			nodes {
 				fields {

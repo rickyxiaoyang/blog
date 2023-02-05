@@ -1,32 +1,23 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import { Layout } from "../../components/shared/Layout";
 import "./post.scss";
 
-type PageData = {
-	data: {
-		markdownRemark: {
-			frontmatter: {
-				title: string;
-				date: string;
-			};
-			html: any;
-		};
-	};
-};
-
 export default function PostTemplate({
 	data: {
-		markdownRemark: { frontmatter, html },
+		markdownRemark: {
+			frontmatter: { title, date },
+			html,
+		},
 	},
-}: PageData) {
+}: PageProps<Queries.PostTemplateQuery>) {
 	return (
 		<Layout>
 			<div>
 				<PostLayout>
 					<div className="post-header">
-						<h1>{frontmatter.title}</h1>
-						<span className="date-text">{frontmatter.date}</span>
+						<h1>{title}</h1>
+						<span className="date-text">{date}</span>
 					</div>
 					<div className="post-body">
 						<div
@@ -45,7 +36,7 @@ function PostLayout({ children }: { children: React.ReactNode }) {
 }
 
 export const pageQuery = graphql`
-	query ($slug: String!) {
+	query PostTemplate($slug: String) {
 		markdownRemark(fields: { slug: { eq: $slug } }) {
 			html
 			frontmatter {
