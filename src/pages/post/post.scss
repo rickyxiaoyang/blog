@@ -7,8 +7,21 @@
   .post-header {
     margin-bottom: 3rem;
   }
+
+  .post-image {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
 .date-text {
   font-size: 12px;
+}
+
+@media only screen and (max-width: 650px) {
+  .post-container .post-image {
+    height: 200px;
+  }
 }

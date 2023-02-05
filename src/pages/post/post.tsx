@@ -9,7 +9,7 @@ export default function PostTemplate({
 	const frontmatter = markdownRemark?.frontmatter;
 	const html = markdownRemark?.html;
 	if (!frontmatter || !html) return;
-	const { title, date } = frontmatter;
+	const { title, date, image } = frontmatter;
 
 	return (
 		<Layout>
@@ -18,6 +18,10 @@ export default function PostTemplate({
 					<div className="post-header">
 						<h1>{title}</h1>
 						<span className="date-text">{date}</span>
+						<div
+							className="post-image"
+							style={{ backgroundImage: `url(${image})` }}
+						></div>
 					</div>
 					<div className="post-body">
 						<div
@@ -42,6 +46,7 @@ export const pageQuery = graphql`
 			frontmatter {
 				date(formatString: "MMMM DD, YYYY")
 				title
+				image
 			}
 		}
 	}
