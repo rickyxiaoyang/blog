@@ -8,7 +8,7 @@ function convertToSlug(text: string): string {
 		.replace(/[^\w-]+/g, "");
 }
 
-exports.createPages = async function ({ actions, graphql }: any) {
+exports.createPages = async function ({ actions, graphql }) {
 	const { data } = await graphql(`
 		query {
 			allMarkdownRemark {
@@ -22,7 +22,7 @@ exports.createPages = async function ({ actions, graphql }: any) {
 			}
 		}
 	`);
-	data.allMarkdownRemark.edges.forEach((edge: any) => {
+	data.allMarkdownRemark.edges.forEach((edge) => {
 		const slug = edge.node.fields.slug;
 		actions.createPage({
 			path: slug,

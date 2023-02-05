@@ -1,0 +1,16 @@
+
+.markdown {
+  blockquote {
+    background: rgba(137, 137, 137, 0.2);
+    color: white;
+    padding: .25rem 1rem;
+    border-radius: 5px;
+    margin: 0;
+    color: var(--plain-text)
+  }
+
+  hr {
+    margin: 2rem 0;
+    opacity: 0.3;
+  }
+}
