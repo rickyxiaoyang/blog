@@ -17,9 +17,9 @@ export default function ThemeContextWrapper({
 	children: React.ReactNode;
 }) {
 	// Gatsby workaround. Load from localStorage in useEffect.
-	let local: Theme = "dark";
+	let local: Theme = "light";
 	useEffect(() => {
-		local = (localStorage?.getItem("theme") ?? "dark") as Theme;
+		local = (localStorage?.getItem("theme") ?? "light") as Theme;
 	}, []);
 	const [theme, setTheme] = useState<Theme>(local);
 
