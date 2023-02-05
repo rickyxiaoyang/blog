@@ -7,7 +7,7 @@ const config: GatsbyConfig = {
 	},
 	graphqlTypegen: true,
 	plugins: [
-		"gatsby-plugin-google-gtag",
+		// "gatsby-plugin-google-gtag",
 		"gatsby-transformer-remark",
 		"gatsby-plugin-sass",
 		{
