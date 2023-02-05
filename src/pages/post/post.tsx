@@ -4,13 +4,13 @@ import { Layout } from "../../components/shared/Layout";
 import "./post.scss";
 
 export default function PostTemplate({
-	data: {
-		markdownRemark: {
-			frontmatter: { title, date },
-			html,
-		},
-	},
+	data: { markdownRemark },
 }: PageProps<Queries.PostTemplateQuery>) {
+	const frontmatter = markdownRemark?.frontmatter;
+	const html = markdownRemark?.html;
+	if (!frontmatter || !html) return;
+	const { title, date } = frontmatter;
+
 	return (
 		<Layout>
 			<div>
