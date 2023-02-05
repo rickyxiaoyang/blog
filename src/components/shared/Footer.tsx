@@ -6,6 +6,9 @@ const yearString = (date: Date) =>
 
 export default function Footer() {
 	const year = yearString(new Date());
+	const navigateToProfile = () => {
+		window.location.href = "https://rickyxiaoyang.com";
+	};
 	return (
 		<div
 			className="footer"
@@ -13,7 +16,10 @@ export default function Footer() {
 		>
 			<ToggleThemeButton />
 			<div>
-				©{year} <span>rickyxiaoyang.com</span>
+				©{year}{" "}
+				<span style={{ cursor: "pointer" }} onClick={navigateToProfile}>
+					rickyxiaoyang.com
+				</span>
 			</div>
 		</div>
 	);
