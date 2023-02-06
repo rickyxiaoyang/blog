@@ -18,8 +18,13 @@ export default function ThemeContextWrapper({
 }) {
 	let local: Theme = "light";
 	useEffect(() => {
-		local = localStorage?.getItem("theme") as Theme;
-		changeTheme(local);
+		const param = retrieveThemeParam() as Theme;
+		if (param) {
+			changeTheme(param);
+		} else {
+			local = localStorage?.getItem("theme") as Theme;
+			changeTheme(local);
+		}
 	}, []);
 	const [theme, setTheme] = useState<Theme>(local);
 
@@ -61,4 +66,9 @@ export function ToggleThemeButton() {
 			</button>
 		</>
 	);
+}
+
+function retrieveThemeParam(): string | null {
+	const params = new URLSearchParams(window.location.search);
+	return params.get("theme");
 }
