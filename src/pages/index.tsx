@@ -18,7 +18,7 @@ const IndexPage = ({ data }: PageProps<Queries.AllPostsQuery>) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Blog - Ricky X. Yang</title>;
+export const Head: HeadFC = () => <title>Blog | Ricky X. Yang</title>;
 
 export const pageQuery = graphql`
 	query AllPosts {
