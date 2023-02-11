@@ -20,3 +20,14 @@
 		font-size: 14px;
 	}
 }
+
+a {
+	color: unset;
+	text-decoration: none;
+	font-weight: 600;
+	transition: 0.2s ease-in-out;
+
+	&:hover {
+		opacity: 0.5;
+	}
+}
