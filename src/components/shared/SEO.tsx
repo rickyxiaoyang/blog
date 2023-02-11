@@ -2,6 +2,7 @@ import React from "react";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 import { Helmet } from "react-helmet";
 
+// Duplication: for some reason, Helmet isn't nesting these elements into it.
 export const SEOHelmet = ({
 	title,
 	description,
@@ -25,13 +26,6 @@ export const SEOHelmet = ({
 
 	return (
 		<Helmet>
-			{/* <SEO
-				title={title}
-				description={defaultDescription}
-				pathname={pathname}
-				image={defaultImage}
-				children={children}
-			/> */}
 			<title>{seo.title}</title>
 			<meta name="description" content={seo.description} />
 			<meta name="image" content={seo.image} />
