@@ -11,10 +11,14 @@ type Post = {
 	image: string;
 };
 
+const byDate = (a: Post, b: Post) => {
+	return new Date(b.date).getTime() - new Date(a.date).getTime();
+};
+
 export function PostsList({ posts }: { posts: Post[] }) {
 	return (
 		<div className="posts-list">
-			{posts.map((post) => (
+			{posts.sort(byDate).map((post) => (
 				<PostItem key={post.slug} post={post} />
 			))}
 			<div style={{ height: "70vh" }}></div>
