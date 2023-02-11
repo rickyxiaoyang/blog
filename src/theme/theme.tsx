@@ -31,7 +31,6 @@ export default function ThemeContextWrapper({
 	function changeTheme(theme: Theme) {
 		setTheme(theme);
 		localStorage.setItem("theme", theme);
-		console.log(`set theme: ${theme}`);
 	}
 
 	useEffect(() => {

@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql, HeadFC, PageProps } from "gatsby";
 import { Layout } from "../components/shared/Layout";
 import { PostsList } from "../components/posts/PostsList";
+import { SEO } from "../components/shared/SEO";
 
 const IndexPage = ({ data }: PageProps<Queries.AllPostsQuery>) => {
 	return (
@@ -18,7 +19,7 @@ const IndexPage = ({ data }: PageProps<Queries.AllPostsQuery>) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Blog | Ricky X. Yang</title>;
+export const Head: HeadFC = () => <SEO />;
 
 export const pageQuery = graphql`
 	query AllPosts {

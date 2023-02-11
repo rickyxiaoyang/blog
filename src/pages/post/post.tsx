@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql, PageProps } from "gatsby";
 import { Layout } from "../../components/shared/Layout";
+import { SEOHelmet } from "../../components/shared/SEO";
 import "./post.scss";
 
 export default function PostTemplate({
@@ -11,27 +12,31 @@ export default function PostTemplate({
 	if (!frontmatter || !html) return;
 	const { title, date, image } = frontmatter;
 
+	const siteTitle: string = `${title} - Blog | Ricky X. Yang`;
 	return (
-		<Layout>
-			<div>
-				<PostLayout>
-					<div className="post-header">
-						<h1>{title}</h1>
-						<span className="date-text">{date}</span>
-						<div
-							className="post-image"
-							style={{ backgroundImage: `url(${image})` }}
-						></div>
-					</div>
-					<div className="post-body">
-						<div
-							className="markdown"
-							dangerouslySetInnerHTML={{ __html: html }}
-						/>
-					</div>
-				</PostLayout>
-			</div>
-		</Layout>
+		<>
+			<SEOHelmet title={siteTitle} />
+			<Layout>
+				<div>
+					<PostLayout>
+						<div className="post-header">
+							<h1>{title}</h1>
+							<span className="date-text">{date}</span>
+							<div
+								className="post-image"
+								style={{ backgroundImage: `url(${image})` }}
+							></div>
+						</div>
+						<div className="post-body">
+							<div
+								className="markdown"
+								dangerouslySetInnerHTML={{ __html: html }}
+							/>
+						</div>
+					</PostLayout>
+				</div>
+			</Layout>
+		</>
 	);
 }
 

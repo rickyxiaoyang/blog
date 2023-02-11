@@ -2,14 +2,16 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
 	siteMetadata: {
-		title: `Blog`,
-		siteUrl: `https://www.yourdomain.tld`,
+		title: `Blog | Ricky X. Yang`,
+		description: "A lifestyle / tech blog, by Ricky Yang.",
+		siteUrl: `https://blog.rickyxiaoyang.com`,
 	},
 	graphqlTypegen: true,
 	plugins: [
 		// "gatsby-plugin-google-gtag",
 		"gatsby-transformer-remark",
 		"gatsby-plugin-sass",
+		"gatsby-plugin-react-helmet",
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
