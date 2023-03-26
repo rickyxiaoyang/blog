@@ -8,8 +8,24 @@ function convertToSlug(text: string): string {
 		.replace(/[^\w-]+/g, "");
 }
 
+exports.onCreateNode = ({ node, actions }: any) => {
+	const { createNodeField } = actions;
+
+	if (node.internal.type === `MarkdownRemark`) {
+		const { title, date } = node.frontmatter;
+		const dateString = dt.format(new Date(date), "yyyy-MM-dd");
+		const customSlug = convertToSlug(title);
+		const url = `/post/${dateString}/${customSlug}`;
+		createNodeField({
+			node,
+			name: `slug`,
+			value: url,
+		});
+	}
+};
+
 exports.createPages = async function ({ actions, graphql }: any) {
-	const { data } = await graphql(`
+	const { data }: { data: Queries.AllSlugsQuery } = await graphql(`
 		query AllSlugs {
 			allMarkdownRemark {
 				edges {
@@ -17,32 +33,24 @@ exports.createPages = async function ({ actions, graphql }: any) {
 						fields {
 							slug
 						}
+						frontmatter {
+							published
+						}
 					}
 				}
 			}
 		}
 	`);
-	data.allMarkdownRemark.edges.forEach((edge: any) => {
-		const slug = edge.node.fields.slug;
-		actions.createPage({
-			path: slug,
-			component: path.resolve(`./src/pages/post/post.tsx`),
-			context: { slug: slug },
-		});
+
+	data.allMarkdownRemark.edges.forEach((edge) => {
+		const slug = edge.node.fields?.slug;
+		const published = edge.node.frontmatter?.published;
+		if (published && !!slug) {
+			actions.createPage({
+				path: slug,
+				component: path.resolve(`./src/pages/post/post.tsx`),
+				context: { slug: slug },
+			});
+		}
 	});
-};
-
-exports.onCreateNode = ({ node, actions }: any) => {
-	const { createNodeField } = actions;
-
-	if (node.internal.type === `MarkdownRemark`) {
-		const date = dt.format(new Date(node.frontmatter.date), "yyyy-MM-dd");
-		const customSlug = convertToSlug(node.frontmatter.title);
-		const url = `/post/${date}/${customSlug}`;
-		createNodeField({
-			node,
-			name: `slug`,
-			value: url,
-		});
-	}
 };

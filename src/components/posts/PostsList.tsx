@@ -5,6 +5,7 @@ import "./PostsList.scss";
 type Post = {
 	slug: string;
 	title: string;
+	published: boolean;
 	seoTitle: string;
 	dateString: string;
 	date: string;

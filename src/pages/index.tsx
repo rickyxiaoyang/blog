@@ -5,14 +5,13 @@ import { PostsList } from "../components/posts/PostsList";
 import { SEO } from "../components/shared/SEO";
 
 const IndexPage = ({ data }: PageProps<Queries.AllPostsQuery>) => {
+	const posts = data.allMarkdownRemark.nodes.map((node: any) => ({
+		...node.frontmatter,
+		slug: node.fields.slug,
+	}));
 	return (
 		<Layout>
-			<PostsList
-				posts={data.allMarkdownRemark.nodes.map((node: any) => ({
-					...node.frontmatter,
-					slug: node.fields.slug,
-				}))}
-			/>
+			<PostsList posts={posts} />
 		</Layout>
 	);
 };
@@ -23,7 +22,7 @@ export const Head: HeadFC = () => <SEO />;
 
 export const pageQuery = graphql`
 	query AllPosts {
-		allMarkdownRemark {
+		allMarkdownRemark(filter: { frontmatter: { published: { eq: true } } }) {
 			nodes {
 				fields {
 					slug
@@ -32,6 +31,7 @@ export const pageQuery = graphql`
 					date(formatString: "MM/DD/YYYY")
 					dateString: date(formatString: "MMMM DD, YYYY")
 					title
+					published
 					seoTitle
 					categories
 					image
