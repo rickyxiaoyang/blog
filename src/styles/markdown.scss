@@ -14,8 +14,13 @@
     opacity: 0.3;
   }
 
+  pre {
+    background: var(--tertiary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+  }
   code {
-    background: rgba(137, 137, 137, 0.2);
+    background: var(--tertiary-color);
     padding: 0.25rem 0.5rem;
     border-radius: 5px;
   }
